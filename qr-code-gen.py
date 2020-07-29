@@ -1,29 +1,28 @@
-import os
-import requests
-import bs4
 import qrcode
 from tkinter import *
 from tkinter import ttk
 
-print("*************************\nEnter name with quotation marks\n*************************\n\n")
-
-
-file = input("Enter name to be encoded: ")
-
-def gen():
-	img = qrcode.make(file)
-
-	img.save("qr,png")
-
-	img.show("qr.png")
-
-
 root = Tk()
-root.title("QR CODE GEN")
-root.geometry('300x300')
+root.geometry('400x400')
+root.title("QR CODE GENERATOR")
+
+def main():
+	img = qrcode.make(str(e.get()))
+
+	img.save((f.get()))
+
+	img.show((f.get()))
 
 
-button = Button(root, text="GENERATE", bg="silver", fg="black", command=gen)
-button.place(x=100, y=100)
+l1 = Label(root, text="Enter word/sentence to turn to QR code:")
+l1.pack()
+e = Entry(root, bg="silver", fg="black")
+e.pack()
+l2 = Label(root, text="Save file as:")
+l2.pack()
+f = Entry(root, bg="silver", fg="black")
+f.pack()
+b = ttk.Button(root, text="GENERATE", command = main)
+b.pack()
 
 root.mainloop()
